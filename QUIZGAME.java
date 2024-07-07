@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 public class QUIZGAME {
     public static void main(String[] args) {
@@ -7,6 +8,7 @@ public class QUIZGAME {
         int score = 0;
         boolean choose = true;
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
         ArrayList<String> questions = new ArrayList<>(Arrays.asList(
             "What is the capital of France?",
             "What is the largest planet in our solar system?",
@@ -77,17 +79,20 @@ public class QUIZGAME {
                     "What do you like to do:\nEnter \"1\" to start the Quiz.\nEnter \"2\" to add questions in Quiz game.\nEnter \"3\" to view your current score.");
                 userChoice = scanner.nextInt();
 
-                switch (userChoice) {
+                switch (userChoice) { // used switch because it is much better
+                                      // than if in this situation as it reduces
+                                      // complexity
                 case 1: {
 
                     break;
                 }
                 case 2: {
-
+                    addQuestions(questions, options, answer, random, scanner);
                     break;
                 }
                 case 3: {
-                    displayScore(score);
+                    displayScore(score); /* called the score function according
+                                            to choice of user */
                     break;
                 }
 
@@ -108,5 +113,43 @@ public class QUIZGAME {
     }
     public static void displayScore(int score) {
         System.out.println("Your current score is " + score + ".");
+    }
+    public static void addQuestions(ArrayList<String> questions,
+                                    ArrayList<String> options,
+                                    ArrayList<String> answer, Random random,
+                                    Scanner scanner) {
+
+        System.out.println(
+            "\nThe format of adding questions is like this :\n1.You will first add question\n2.Its options\n3.Correct answer option label like A,B,C,D (capital)\n");
+        System.out.println("How many Questions would u like to enter:");
+        int totalQuestions = scanner.nextInt();
+        scanner.nextLine();
+        for (int i = 0; i < totalQuestions; i++) {
+            questions.add("");
+            answer.add("");
+            options.add("");
+            int questionNumber = random.nextInt(questions.size());
+            System.out.println(questionNumber);
+            questions.set(questions.size() - 1, questions.get(questionNumber));
+            System.out.println("Enter you question");
+            questions.set(questionNumber, scanner.nextLine());
+            System.out.println("Enter option A:");
+            String A = "A. " + scanner.nextLine();
+            System.out.println("Enter option B:");
+            String B = "B. " + scanner.nextLine();
+            System.out.println("Enter option C:");
+            String C = "C. " + scanner.nextLine();
+            System.out.println("Enter option D:");
+            String D = "D. " + scanner.nextLine();
+            String combined = A + "\n" + B + "\n" + C + "\n" + D;
+            options.set(options.size() - 1, options.get(questionNumber));
+            options.set(questionNumber, combined);
+            answer.set(answer.size() - 1, answer.get(questionNumber));
+            System.out.println("Enter the correct option:");
+            answer.set(questionNumber, scanner.nextLine());
+            System.out.println("You Question " + (i + 1) +
+                               " is added successfully!");
+        }
+        System.out.println("You have successfully added all your Questions");
     }
 }
