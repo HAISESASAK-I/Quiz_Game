@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class QUIZGAME {
     public static void main(String[] args) {
         int userChoice;
+        int score = 0;
         boolean choose = true;
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> questions = new ArrayList<>(Arrays.asList(
@@ -86,6 +87,7 @@ public class QUIZGAME {
                     break;
                 }
                 case 3: {
+                    displayScore(score);
                     break;
                 }
 
@@ -103,5 +105,8 @@ public class QUIZGAME {
                 return;
             }
         } while (choose);
+    }
+    public static void displayScore(int score) {
+        System.out.println("Your current score is " + score + ".");
     }
 }
