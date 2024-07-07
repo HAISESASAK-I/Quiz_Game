@@ -83,7 +83,8 @@ public class QUIZGAME {
                                       // than if in this situation as it reduces
                                       // complexity
                 case 1: {
-
+                    score =
+                        quizGame(questions, options, answer, random, scanner);
                     break;
                 }
                 case 2: {
@@ -111,7 +112,52 @@ public class QUIZGAME {
             }
         } while (choose);
     }
-    public static void displayScore(int score) {
+    // method of actual quiz game
+    public static int quizGame(ArrayList<String> questions,
+                               ArrayList<String> options,
+                               ArrayList<String> answer, Random random,
+                               Scanner scanner) {
+        System.out.println(
+            "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer\n3.Either you lose or you win you can see your score by entering \"2\" from the menu\n");
+        System.out.println("How many Question would you like to answer?");
+        int numberOfQuestions = scanner.nextInt();
+        int tries = 0, score = 0;
+        scanner.nextLine();
+        for (int i = 0; i < numberOfQuestions; i++) {
+            if (tries > 3) {
+                System.out.println("You lost all your tries");
+                System.out.println("Game Over");
+                break;
+            }
+            System.out.println(
+                "----------------------------------------------------------------------------------------------------------");
+            int question = random.nextInt(questions.size());
+            System.out.println(questions.get(question));
+            System.out.println(options.get(question));
+            System.out.print("Enter you answer:");
+            String userAnswer = scanner.nextLine();
+            if (userAnswer.equals(answer.get(question))) {
+                System.out.println(
+                    "----------------------\nYour answer is correct.\n----------------------");
+                score++;
+            } else { // if user's answer is correct score increments otherwise
+                     // tries increment and if tires is greater than 3 it
+                     // displays game over
+                System.out.println(
+
+                    "---------------------------------\nYour answer is incorrect\nThe correct option is " +
+                    answer.get(question) +
+                    ".\n--------------------------------");
+                tries++;
+            }
+            if (i == numberOfQuestions - 1) {
+                System.out.println(
+                    "You have successfully completed the game see your score from menu!");
+            }
+        }
+        return score;
+    }
+    public static void displayScore(int score) { // method for displaying score
         System.out.println("Your current score is " + score + ".");
     }
     public static void addQuestions(ArrayList<String> questions,
