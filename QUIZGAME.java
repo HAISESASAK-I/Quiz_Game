@@ -104,8 +104,11 @@ public class QUIZGAME {
                 }
 
             } while (userChoice != 1 && userChoice != 2 && userChoice != 3);
-            System.out.println("Would u like to play again?(true/false):");
             scanner.nextLine();
+            System.out.println(
+
+                "Would u like to continue with our game?(true/false):");
+
             choose = Boolean.valueOf(scanner.nextLine());
             if (!choose) {
                 return;
@@ -122,20 +125,31 @@ public class QUIZGAME {
         System.out.println("How many Question would you like to answer?");
         int numberOfQuestions = scanner.nextInt();
         int tries = 0, score = 0;
+        String userAnswer;
         scanner.nextLine();
         for (int i = 0; i < numberOfQuestions; i++) {
-            if (tries > 3) {
+            if (tries == 4) {
                 System.out.println("You lost all your tries");
                 System.out.println("Game Over");
                 break;
             }
-            System.out.println(
-                "----------------------------------------------------------------------------------------------------------");
+
             int question = random.nextInt(questions.size());
-            System.out.println(questions.get(question));
-            System.out.println(options.get(question));
-            System.out.print("Enter you answer:");
-            String userAnswer = scanner.nextLine();
+            do {
+                System.out.println(
+                    "----------------------------------------------------------------------------------------------------------");
+                System.out.println(questions.get(question));
+                System.out.println(options.get(question));
+                System.out.print("Enter you answer:");
+                userAnswer = scanner.nextLine();
+                if (userAnswer != "A" && userAnswer != "B" &&
+                    userAnswer != "C" && userAnswer != "D") {
+                    System.out.println(
+                        "You have entered an invalid Input!\nTryAgain!");
+                } else
+                    break;
+            } while (true);
+
             if (userAnswer.equals(answer.get(question))) {
                 System.out.println(
                     "----------------------\nYour answer is correct.\n----------------------");
