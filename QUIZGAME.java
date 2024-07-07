@@ -3,7 +3,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 public class QUIZGAME {
     public static void main(String[] args) {
-
+        int userChoice;
+        boolean choose = true;
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> questions = new ArrayList<>(Arrays.asList(
             "What is the capital of France?",
@@ -67,29 +68,40 @@ public class QUIZGAME {
             Arrays.asList("B", "C", "B", "C", "C", "A", "A", "B", "B", "A", "C",
                           "C", "B", "B", "C", "B", "D", "C", "C", "B", "A", "B",
                           "C", "A", "B", "C", "C", "C", "B", "A"));
-        System.out.println(answer);
-        System.out.println(
-            "<-------------------------------------Quiz Game--------------------------------------------------");
-        System.out.println(
-            "What do you like to do:\nEnter \"1\" to start the Quiz.\nEnter \"2\" to add questions in Quiz game.\nEnter \"3\" to view your current score.");
-        int userChoice = scanner.nextInt();
-        switch (userChoice) {
-        case 1: {
-
-            break;
-        }
-        case 2: {
-
-            break;
-        }
-        case 3: {
-            break;
-        }
-
-        default: {
+        do {
             System.out.println(
-                "You have entered an invalid input\n Kindly enter a valid input");
-        }
-        }
+                "<-------------------------------------Quiz Game--------------------------------------------------");
+            do {
+                System.out.println(
+                    "What do you like to do:\nEnter \"1\" to start the Quiz.\nEnter \"2\" to add questions in Quiz game.\nEnter \"3\" to view your current score.");
+                userChoice = scanner.nextInt();
+
+                switch (userChoice) {
+                case 1: {
+
+                    break;
+                }
+                case 2: {
+
+                    break;
+                }
+                case 3: {
+                    break;
+                }
+
+                default: {
+                    System.out.println(
+                        "You have entered an invalid input\nKindly enter a valid input");
+                }
+                }
+
+            } while (userChoice != 1 && userChoice != 2 && userChoice != 3);
+            System.out.println("Would u like to play again?(true/false):");
+            scanner.nextLine();
+            choose = Boolean.valueOf(scanner.nextLine());
+            if (!choose) {
+                return;
+            }
+        } while (choose);
     }
 }
