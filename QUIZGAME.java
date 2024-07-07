@@ -1,9 +1,13 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 public class QUIZGAME {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> questions = new ArrayList<>(Arrays.asList());
+        ArrayList<String> options = new ArrayList<>(Arrays.asList());
+        ArrayList<String> answer = new ArrayList<>(Arrays.asList());
         System.out.println(
             "<-------------------------------------Quiz Game--------------------------------------------------");
         System.out.println(
