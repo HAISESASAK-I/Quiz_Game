@@ -93,7 +93,8 @@ public class QUIZGAME {
                 }
                 case 3: {
                     displayScore(score); /* called the score function according
-                                            to choice of user */
+                                             to choice of user */
+                    scanner.nextLine();
                     break;
                 }
 
@@ -104,7 +105,7 @@ public class QUIZGAME {
                 }
 
             } while (userChoice != 1 && userChoice != 2 && userChoice != 3);
-            scanner.nextLine();
+
             System.out.println(
 
                 "Would u like to continue with our game?(true/false):");
@@ -128,18 +129,29 @@ public class QUIZGAME {
         System.out.println(
             "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer.\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer.\n3.Either you lose or you win you can see your score by entering \"2\" from the menu.\n");
         System.out.println("How many Question would you like to answer?");
+        ArrayList<Integer> check = new ArrayList<>();
         int numberOfQuestions = scanner.nextInt();
         int tries = 0, score = 0;
         String userAnswer;
         scanner.nextLine();
         for (int i = 0; i < numberOfQuestions; i++) {
-            if (tries == 4) {
-                System.out.println("You lost all your tries");
-                System.out.println("Game Over");
-                break;
-            }
-
-            int question = random.nextInt(questions.size());
+            // if (tries == 3) {
+            //     System.out.println("You lost all your tries");
+            //     System.out.println("Game Over");
+            //     break;
+            // }
+            int question;
+            do {
+                question = random.nextInt(questions.size());
+                if (check.contains(question)) {
+                    continue;
+                } else {
+                    check.add(question); // it will continue to generate randoms
+                                         // numbers until they are unique so no
+                                         // duplication
+                    break;
+                }
+            } while (true);
             do {
                 System.out.println(
                     "----------------------------------------------------------------------------------------------------------");
@@ -195,9 +207,9 @@ public class QUIZGAME {
             answer.add("");
             options.add("");
             int questionNumber = random.nextInt(questions.size());
-            System.out.println(questionNumber);
+
             questions.set(questions.size() - 1, questions.get(questionNumber));
-            System.out.println("Enter you question");
+            System.out.println("Enter you question:");
             questions.set(questionNumber, scanner.nextLine());
             System.out.println("Enter option A:");
             String A = "A. " + scanner.nextLine();
@@ -219,7 +231,7 @@ public class QUIZGAME {
                     break;
                 } else
                     System.out.println(
-                        "You have entered an invalid input\n Enter A,B,C or D");
+                        "You have entered an invalid input\nEnter A,B,C or D");
             } while (true);
             answer.set(questionNumber, userAnswer);
             System.out.println("You Question " + (i + 1) +
