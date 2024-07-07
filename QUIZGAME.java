@@ -116,9 +116,11 @@ public class QUIZGAME {
                                      // anything else than true will be
                                      // considered false
             if (!choose) {
+                scanner.close();
                 return;
             }
         } while (choose);
+        scanner.close();
     }
 
     // method of actual quiz game
