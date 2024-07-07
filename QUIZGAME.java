@@ -178,7 +178,7 @@ public class QUIZGAME {
                                     ArrayList<String> options,
                                     ArrayList<String> answer, Random random,
                                     Scanner scanner) {
-
+        String userAnswer;
         System.out.println(
             "\nThe format of adding questions is like this :\n1.You will first add question\n2.Its options\n3.Correct answer option label like A,B,C,D (capital)\n");
         System.out.println("How many Questions would u like to enter:");
@@ -205,8 +205,17 @@ public class QUIZGAME {
             options.set(options.size() - 1, options.get(questionNumber));
             options.set(questionNumber, combined);
             answer.set(answer.size() - 1, answer.get(questionNumber));
-            System.out.println("Enter the correct option:");
-            answer.set(questionNumber, scanner.nextLine());
+            do {
+                System.out.println("Enter the correct option:");
+                userAnswer = scanner.nextLine();
+                if (userAnswer != "A" && userAnswer != "B" &&
+                    userAnswer != "C" && userAnswer != "D") {
+                    System.out.println(
+                        "You have entered an invalid input\n Enter A,B,C or D");
+                } else
+                    break;
+            } while (true);
+            answer.set(questionNumber, userAnswer);
             System.out.println("You Question " + (i + 1) +
                                " is added successfully!");
         }
