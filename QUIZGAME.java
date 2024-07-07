@@ -99,7 +99,7 @@ public class QUIZGAME {
 
                 default: {
                     System.out.println(
-                        "You have entered an invalid input\nKindly enter a valid input");
+                        "You have entered an invalid input\nKindly enter a valid input\n");
                 }
                 }
 
@@ -109,19 +109,24 @@ public class QUIZGAME {
 
                 "Would u like to continue with our game?(true/false):");
 
-            choose = Boolean.valueOf(scanner.nextLine());
+            choose = Boolean.valueOf(
+                scanner.nextLine()); // if you enter any variation of true like
+                                     // true TruE it will be considered true
+                                     // anything else than true will be
+                                     // considered false
             if (!choose) {
                 return;
             }
         } while (choose);
     }
+
     // method of actual quiz game
     public static int quizGame(ArrayList<String> questions,
                                ArrayList<String> options,
                                ArrayList<String> answer, Random random,
                                Scanner scanner) {
         System.out.println(
-            "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer\n3.Either you lose or you win you can see your score by entering \"2\" from the menu\n");
+            "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer.\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer.\n3.Either you lose or you win you can see your score by entering \"2\" from the menu.\n");
         System.out.println("How many Question would you like to answer?");
         int numberOfQuestions = scanner.nextInt();
         int tries = 0, score = 0;
@@ -142,12 +147,13 @@ public class QUIZGAME {
                 System.out.println(options.get(question));
                 System.out.print("Enter you answer:");
                 userAnswer = scanner.nextLine();
-                if (userAnswer != "A" && userAnswer != "B" &&
-                    userAnswer != "C" && userAnswer != "D") {
+                if (userAnswer.equals("A") || userAnswer.equals("B") ||
+                    userAnswer.equals("C") || userAnswer.equals("D")) {
+                    break;
+                } else
                     System.out.println(
                         "You have entered an invalid Input!\nTryAgain!");
-                } else
-                    break;
+
             } while (true);
 
             if (userAnswer.equals(answer.get(question))) {
@@ -208,12 +214,12 @@ public class QUIZGAME {
             do {
                 System.out.println("Enter the correct option:");
                 userAnswer = scanner.nextLine();
-                if (userAnswer != "A" && userAnswer != "B" &&
-                    userAnswer != "C" && userAnswer != "D") {
+                if (userAnswer.equals("A") || userAnswer.equals("B") ||
+                    userAnswer.equals("C") || userAnswer.equals("D")) {
+                    break;
+                } else
                     System.out.println(
                         "You have entered an invalid input\n Enter A,B,C or D");
-                } else
-                    break;
             } while (true);
             answer.set(questionNumber, userAnswer);
             System.out.println("You Question " + (i + 1) +
