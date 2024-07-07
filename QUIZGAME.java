@@ -34,8 +34,40 @@ public class QUIZGAME {
             "Which planet has the most moons?",
             "What is the main gas found in the Earth's atmosphere?",
             "Who invented the telephone?"));
-        ArrayList<String> options = new ArrayList<>(Arrays.asList());
-        ArrayList<String> answer = new ArrayList<>(Arrays.asList());
+        ArrayList<String> options = new ArrayList<>(Arrays.asList(
+            "A. Berlin\nB. Paris\nC. Madrid\nD. Rome",
+            "A. Earth\nB. Mars\nC. Jupiter\nD. Saturn",
+            "A. Gold\nB. Oxygen\nC. Osmium\nD. Opal", "A. 6\nB. 7\nC. 8\nD. 9",
+            "A. Charles Dickens\nB. Mark Twain\nC. William Shakespeare\nD. J.K. Rowling",
+            "A. 300,000 km/s\nB. 150,000 km/s\nC. 450,000 km/s\nD. 600,000 km/s",
+            "A. George Washington\nB. Abraham Lincoln\nC. Thomas Jefferson\nD. John Adams",
+            "A. 1\nB. 2\nC. 3\nD. 5", "A. Earth\nB. Mars\nC. Jupiter\nD. Venus",
+            "A. H2O\nB. CO2\nC. O2\nD. NaCl", "A. 5\nB. 6\nC. 7\nD. 8",
+            "A. Vincent van Gogh\nB. Pablo Picasso\nC. Leonardo da Vinci\nD. Claude Monet",
+            "A. Elephant\nB. Blue Whale\nC. Giraffe\nD. Great White Shark",
+            "A. 1910\nB. 1912\nC. 1914\nD. 1916",
+            "A. Gold\nB. Iron\nC. Diamond\nD. Platinum",
+            "A. Albert Einstein\nB. Alexander Fleming\nC. Isaac Newton\nD. Marie Curie",
+            "A. Atlantic\nB. Indian\nC. Arctic\nD. Pacific",
+            "A. 48\nB. 49\nC. 50\nD. 51",
+            "A. Beijing\nB. Seoul\nC. Tokyo\nD. Bangkok",
+            "A. Amazon\nB. Nile\nC. Mississippi\nD. Yangtze",
+            "A. Charles Babbage\nB. Alan Turing\nC. Steve Jobs\nD. Bill Gates",
+            "A. Chicken\nB. Fish\nC. Beef\nD. Tofu",
+            "A. George Orwell\nB. Mark Twain\nC. William Shakespeare\nD. Jane Austen",
+            "A. Au\nB. Ag\nC. Pb\nD. Fe",
+            "A. Monaco\nB. Vatican City\nC. San Marino\nD. Liechtenstein",
+            "A. Nikola Tesla\nB. Isaac Newton\nC. Albert Einstein\nD. Galileo Galilei",
+            "A. Spanish\nB. English\nC. Mandarin\nD. Hindi",
+            "A. Earth\nB. Mars\nC. Jupiter\nD. Saturn",
+            "A. Oxygen\nB. Nitrogen\nC. Carbon Dioxide\nD. Hydrogen",
+            "A. Alexander Graham Bell\nB. Nikola Tesla\nC. Thomas Edison\nD. Guglielmo Marconi"));
+
+        ArrayList<String> answer = new ArrayList<>(
+            Arrays.asList("B", "C", "B", "C", "C", "A", "A", "B", "B", "A", "C",
+                          "C", "B", "B", "C", "B", "D", "C", "C", "B", "A", "B",
+                          "C", "A", "B", "C", "C", "C", "B", "A"));
+        System.out.println(answer);
         System.out.println(
             "<-------------------------------------Quiz Game--------------------------------------------------");
         System.out.println(
