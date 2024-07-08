@@ -73,7 +73,7 @@ public class QUIZGAME {
                           "C", "A", "B", "C", "C", "C", "B", "A"));
         do {
             System.out.println(
-                "<-------------------------------------Quiz Game--------------------------------------------------");
+                "<-------------------------------------Quiz Game-------------------------------------------------->");
             do {
                 System.out.println(
                     "What do you like to do:\nEnter \"1\" to start the Quiz.\nEnter \"2\" to add questions in Quiz game.\nEnter \"3\" to view your current score.");
@@ -129,19 +129,28 @@ public class QUIZGAME {
                                ArrayList<String> answer, Random random,
                                Scanner scanner) {
         System.out.println(
-            "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer.\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer.\n3.Either you lose or you win you can see your score by entering \"2\" from the menu.\n");
+            "\nThe Quiz game works like this :\n1.You enter the number of Questions to answer.\n2.You have three tries If u fail thrice during the game the game will be over plus you must write capital A B C D to answer.\n3.Either you lose or you win you can see your score by entering \"3\" from the menu.\n");
         System.out.println("How many Question would you like to answer?");
         ArrayList<Integer> check = new ArrayList<>();
-        int numberOfQuestions = scanner.nextInt();
+        int numberOfQuestions;
+        do {
+            numberOfQuestions = scanner.nextInt();
+            if (numberOfQuestions > questions.size()) {
+                System.out.println(
+                    "Your number of Questions exceed the limit of Question bank\nTry Again! There are currently  " +
+                    questions.size() + " questions available.");
+            } else
+                break;
+        } while (true);
         int tries = 0, score = 0;
         String userAnswer;
         scanner.nextLine();
         for (int i = 0; i < numberOfQuestions; i++) {
-            // if (tries == 3) {
-            //     System.out.println("You lost all your tries");
-            //     System.out.println("Game Over");
-            //     break;
-            // }
+            if (tries == 3) {
+                System.out.println("You lost all your tries");
+                System.out.println("Game Over");
+                break;
+            }
             int question;
             do {
                 question = random.nextInt(questions.size());
