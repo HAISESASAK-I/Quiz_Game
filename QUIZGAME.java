@@ -139,6 +139,10 @@ public class QUIZGAME {
                 System.out.println(
                     "Your number of Questions exceed the limit of Question bank\nTry Again! There are currently  " +
                     questions.size() + " questions available.");
+            } else if (numberOfQuestions <= 0) {
+                System.out.println(
+                    "The number of Question must be greater than zero\nTry Again! There are currently " +
+                    questions.size() + " questions available.");
             } else
                 break;
         } while (true);
